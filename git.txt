@@ -1,0 +1,65 @@
+视频地址：https://www.iqiyi.com/v_19rqy4vj64.html
+
+SVN 冲突：避免冲突，及时提交、更新
+
+
+git：版本控制软件
+分布式版本控制软件
+
+命令：
+git add:将本地文件增加到暂存区
+
+git commit:将暂存区的内容 提交到 本地仓库  （版本库：可以叫分支（分之一、分支二、分支三、默认主分支：master））
+
+git push:将本地仓库的内容 推送到 远程仓库
+
+git pull:将远程仓库的内容 获取到 本地仓库
+
+
+安装：git 
+
+下载地址:msysgit.github.io
+
+安装时:选择——>> Use git from git bash only
+
+配置path： E:\programs\Git\bin
+配置git:用户名和邮箱
+右键-git bash
+
+git config --global user.name ""
+git config --global user.email ""
+
+查看： C:\User\YANQUN\.gitconfig
+
+搭建git服务器（远程仓库）：统一的托管网站（https://github.com）
+
+为了在本地和远程仓库之间进行 免密钥登录，可以配置ssh
+
+
+配置ssh:先在本地配置，发送给远程
+
+先在本地生成ssh:
+
+ssh-keygen -t rsa -C 541000714@qq.com	   "一直回车"
+
+发送给远程：
+
+github ->  settings -> SSH and ...  -New SSH  - title任意、key中输入 刚才在本地生成的ssh:
+将本地刚才生成的id_ras.pub内容复制到远程的Key中
+ 
+测试连通性：
+ssh -T git@github.com
+
+如果本地和远程成功通信,则可以在 /.ssh 目录中 发现know_honsts文件
+如果失败：多尝试几次、检查回车
+
+在本地新建git项目
+在项目根目录 右键- git bash   -git init(初始化)
+
+在远程建立git项目
+new -建立项目- 生成 https://github.com/yanqun/mygitremote.git
+
+本地项目和远程项目关联
+git remote add oragin git@github.com:yanqun/mygitremote.git
+
+并发送给远程
