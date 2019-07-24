@@ -1,0 +1,29 @@
+﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#><#@
+ output extension=".cs"#> 
+<#
+CodeGenerationTools code = new CodeGenerationTools(this);
+MetadataLoader loader = new MetadataLoader(this);
+CodeRegion region = new CodeRegion(this, 1);
+MetadataTools ef = new MetadataTools(this);
+string inputFile = @"..\\HeiMa.OA.Model\\DbContextModel.edmx";
+EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(inputFile);
+string namespaceName = code.VsNamespaceSuggestion();
+EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+#>
+using HeiMa.OA.Factory;
+using HeiMa.OA.IBLL;
+namespace HeiMa.OA.BLL
+{
+	<#
+	foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name))
+	{#>
+	 public partial class <#=entity.Name#>Service : BaseService<Model.<#=entity.Name#>>,I<#=entity.Name#>Service
+    {
+		 public override void GetCurrentDbSession()
+        {
+            CurrentDbSession =new DbSession().I<#=entity.Name#>;
+        }
+	}
+	<#}#>
+}

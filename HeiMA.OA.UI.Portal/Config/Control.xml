@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+  <object type="HeiMA.OA.UI.Portal.Controllers.HomeController,HeiMA.OA.UI.Portal.Controllers" singleton="false">
+    <property name="IUserInfoService" ref="IUserInfo"/>
+  </object>
+  <object name="IUserInfo" type="HeiMa.OA.BLL.UserInfoService,HeiMa.OA.BLL" singleton="false">
+  </object>
+</objects>

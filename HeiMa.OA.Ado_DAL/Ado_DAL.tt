@@ -1,0 +1,50 @@
+﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#><#@
+ output extension=".cs"#> 
+<#
+CodeGenerationTools code = new CodeGenerationTools(this);
+MetadataLoader loader = new MetadataLoader(this);
+CodeRegion region = new CodeRegion(this, 1);
+MetadataTools ef = new MetadataTools(this);
+string inputFile = @"..\\HeiMa.OA.Model\\DbContextModel.edmx";
+EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(inputFile);
+string namespaceName = code.VsNamespaceSuggestion();
+EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+#>
+using System;
+using System.Linq;
+using HeiMa.OA.IDAL;
+namespace HeiMa.OA.Ado_DAL
+{
+	<#
+	foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name))
+	{#>
+	 public partial class <#=entity.Name#>Ado_DAL :I<#=entity.Name#>DAL
+    {
+	  public bool Add(Model.<#=entity.Name#> t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(Model.<#=entity.Name#> t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(Model.<#=entity.Name#> t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Model.<#=entity.Name#>> LoadEntities(System.Linq.Expressions.Expression<Func<Model.<#=entity.Name#>, bool>> whereLambda)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Model.<#=entity.Name#>> LoadPageEntities<S>(int pageSize, int pageIndex, out int totalCount, System.Linq.Expressions.Expression<Func<Model.<#=entity.Name#>, bool>> whereLambda, bool isAsc, System.Linq.Expressions.Expression<Func<Model.<#=entity.Name#>, S>> orderBy)
+        {
+            throw new NotImplementedException();
+        }
+	}
+	<#}#>
+}

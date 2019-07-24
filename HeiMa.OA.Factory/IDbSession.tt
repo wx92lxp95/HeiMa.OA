@@ -1,0 +1,41 @@
+﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#><#@
+ output extension=".cs"#> 
+<#
+CodeGenerationTools code = new CodeGenerationTools(this);
+MetadataLoader loader = new MetadataLoader(this);
+CodeRegion region = new CodeRegion(this, 1);
+MetadataTools ef = new MetadataTools(this);
+ 
+string inputFile = @"..\\HeiMa.OA.Model\\DbContextModel.edmx";
+ 
+EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(inputFile);
+string namespaceName = code.VsNamespaceSuggestion();
+ 
+EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+ 
+#>
+using HeiMa.OA.IDAL;
+namespace HeiMa.OA.Factory
+{
+	public partial class DbSession : IDbSession
+    {
+		<#
+		foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name))
+		{
+		#>  
+			private I<#=entity.Name#>DAL _i<#=entity.Name#>;
+			public I<#=entity.Name#>DAL I<#=entity.Name#>
+			{
+             get
+             {
+                if (_i<#=entity.Name#> == null)
+                {
+                    _i<#=entity.Name#> = Factory.GetI<#=entity.Name#>();
+                }
+                return _i<#=entity.Name#>;
+				}
+			}
+		<#}#>
+ }
+}
