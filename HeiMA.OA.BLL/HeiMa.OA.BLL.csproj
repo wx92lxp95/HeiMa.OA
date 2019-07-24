@@ -75,6 +75,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="1.html" />
     <Content Include="BaseService.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BaseService1.cs</LastGenOutput>
