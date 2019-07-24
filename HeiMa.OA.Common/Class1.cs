@@ -3,7 +3,9 @@
     public class Class1
     {
         string SS { get; set; }
-        string name { get; set; }
+
+
+        string names { get; set; }
     } 
 }
  
