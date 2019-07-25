@@ -10,6 +10,8 @@
         string age { get; set; }
 
         int jj { get; set; }
+
+        int ll { get; set; }
     } 
 }
  
