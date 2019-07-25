@@ -8,6 +8,8 @@
         string names { get; set; }
 
         int Age { get; set; }
+
+        int kk { get; set; }
     } 
 }
  
