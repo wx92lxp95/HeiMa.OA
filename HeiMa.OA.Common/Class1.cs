@@ -15,8 +15,6 @@
 
         int ll { get; set; }
 
-        int kk { get; set; }
-
         int oo { get; set; }
     } 
 }
