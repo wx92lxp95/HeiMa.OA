@@ -12,6 +12,8 @@
         int jj { get; set; }
 
         int ll { get; set; }
+
+        int kk { get; set; }
     } 
 }
  
