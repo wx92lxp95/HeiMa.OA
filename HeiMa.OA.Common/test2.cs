@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace HeiMa.OA.Common
 {
-    class test2
+   public class test2
     {
     }
 }
+ 

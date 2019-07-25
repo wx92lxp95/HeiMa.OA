@@ -6,6 +6,8 @@
 
 
         string names { get; set; }
+
+        int Age { get; set; }
     } 
 }
  
