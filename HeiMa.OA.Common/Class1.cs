@@ -14,7 +14,10 @@
         int kk { get; set; }
 
         int ll { get; set; }
-        int pp { get; set; }
+
+        int kk { get; set; }
+
+        int oo { get; set; }
     } 
 }
  
