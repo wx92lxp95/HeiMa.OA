@@ -8,6 +8,7 @@ namespace HeiMa.OA.Common
 {
    public class test2
     {
+        public int Age { get; set; }
     }
 }
  
