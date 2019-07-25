@@ -7,9 +7,9 @@
 
         string names { get; set; }
 
-        int Age { get; set; }
+        string age { get; set; }
 
-        int kk { get; set; }
+        int jj { get; set; }
     } 
 }
  
